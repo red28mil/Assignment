@@ -1,3 +1,4 @@
+import {withRouter} from "react-router-dom";
 import React from "react";
 import ArrowBackIcon from "@material-ui/icons/ArrowBack";
 import ArrowForwardIcon from "@material-ui/icons/ArrowForward";
@@ -15,27 +16,26 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-const Header = (props ) => {
+const Header = ({title, history}) => {
   const classes = useStyles();
-  const title = props.title
+  //const title = props.title
   return (
     <Paper component="div" className={classes.root}>
       <IconButton
-        aria-label="go back"
-      >
+        aria-label="go back"onClick={() => history.goBack()}>
+      
         <ArrowBackIcon color="primary" fontSize="large" />
       </IconButton>
 
       <Typography variant="h4" component="h3">
         {title}
       </Typography>
-      <IconButton
-        aria-label="go forward"
-      >
+      <IconButton aria-label="go forward" onClick={() => history.goForward()}>
+      
         <ArrowForwardIcon color="primary" fontSize="large" />
       </IconButton>
     </Paper>
   );
 };
 
-export default Header;
+export default withRouter(Header);
