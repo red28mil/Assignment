@@ -10,6 +10,7 @@ import { BrowserRouter, Route, Redirect, Switch, Link } from "react-router-dom";
 import UpcomingMoviesPage from "./pages/upcomingMoviesPage";
 import FavoriteMoviesPage from "./pages/favoriteMoviesPage"; 
 import TopRatedPage from "./pages/topRatedPage";
+import PopularMoviePage from "./pages/popularMoviePage";
 import { QueryClientProvider, QueryClient } from 'react-query';
 import {ReactQueryDevtools} from 'react-query/devtools';
 
@@ -37,6 +38,7 @@ const App = () => {
       <Route path="/reviews/:id" component={MovieReviewPage}/>
         <Route exact path="/movies/favorites" component={FavoriteMoviesPage}/>
         <Route exact path="/movies/toprated" component={TopRatedPage}/>
+        <Route exact path="/movies/popular" component={PopularMoviePage}/>
         <Route path="/movies/:id" component={MoviePage} />
         
         <Route exact path="/" component={HomePage} />

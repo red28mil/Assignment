@@ -1,15 +1,15 @@
 import React from "react";
 import PageTemplate from '../components/templateMovieListPage';
-import { getCredits } from "../api/tmdb-api";
+import { getPopularMovies } from "../api/tmdb-api";
 import { useQuery } from 'react-query';
 import Spinner from '../components/spinner';
 
 import AddToWatchIcon from "../components/cardIcons/addToWatch";
 
 
-const MovieCreditsPage = (props) => {
+const PopularMoviePage = (props) => {
   // useQuery used to cache upcoming movies page data
-  const { data, error, isLoading, isError } = useQuery('cast', getCredits)
+  const { data, error, isLoading, isError } = useQuery('popular', getPopularMovies)
 
   if (isLoading) {
     return <Spinner />
@@ -26,7 +26,7 @@ const MovieCreditsPage = (props) => {
 
   return (
     <PageTemplate
-      title='Cast'
+      title='Popular'
       movies={movies}
       action={(movie) => {
         return <>
@@ -38,4 +38,14 @@ const MovieCreditsPage = (props) => {
     />
   );
 };
-export default MovieCreditsPage;
+export default PopularMoviePage;
+
+
+
+
+
+
+
+
+
+
