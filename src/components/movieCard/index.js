@@ -92,6 +92,15 @@ export default function MovieCard({ movie, action }) {
           </Button>
         </Link>
       </CardActions>
+      <CardActions disableSpacing>
+        {action(movie)}
+      
+        <Link to={`/credits/${movie.id}`}>
+          <Button variant="outlined" size="medium" color="primary">
+            cast ...
+          </Button>
+        </Link>
+      </CardActions>
     </Card>
   );
 }

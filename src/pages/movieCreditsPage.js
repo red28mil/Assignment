@@ -1,41 +1,41 @@
 import React from "react";
-import PageTemplate from '../components/templateMovieListPage';
-import { getCredits } from "../api/tmdb-api";
-import { useQuery } from 'react-query';
+import { withRouter } from "react-router-dom";
+import PageTemplate from "../components/templateMoviePage";
+import MovieCredits from "../components/movieCredits";
+import { getMovieCredits } from "../api/tmdb-api";
+import { useQuery } from "react-query";
 import Spinner from '../components/spinner';
-
-import AddToWatchIcon from "../components/cardIcons/addToWatch";
 
 
 const MovieCreditsPage = (props) => {
-  // useQuery used to cache upcoming movies page data
-  const { data, error, isLoading, isError } = useQuery('cast', getCredits)
-
-  if (isLoading) {
-    return <Spinner />
-  }
-
-  if (isError) {
-    return <h1>{error.message}</h1>
-  }
-  const movies = data.results;
-
-  // Redundant, but necessary to avoid app crashing.
-  const favorites = movies.filter(m => m.favorite)
-  localStorage.setItem('favorites', JSON.stringify(favorites))
+  const { id } = props.match.params;
+    const { data: movie, error, isLoading, isError } = useQuery(
+      ["movie", { id: id }],
+      getMovieCredits
+    );
+  
+    if (isLoading) {
+      return <Spinner />;
+    }
+  
+    if (isError) {
+      return <h1>{error.message}</h1>;
+    }
 
   return (
-    <PageTemplate
-      title='Cast'
-      movies={movies}
-      action={(movie) => {
-        return <>
-            
-            <AddToWatchIcon movie={movie} />
-            
-            </>
-      }}
-    />
+<>
+    {movie ? (
+      <>
+        <PageTemplate movie={movie}>
+          <MovieCredits movie={movie} />
+        </PageTemplate>
+      </>
+    ) : (
+      <p>Waiting for movie details</p>
+    )}
+  </>
   );
 };
-export default MovieCreditsPage;
+
+
+export default withRouter(MovieCreditsPage);

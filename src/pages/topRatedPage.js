@@ -31,7 +31,6 @@ const TopRatedPage = (props) => {
       action={(movie) => {
         return <>
             
-            <AddToWatchIcon movie={movie} />
             
             </>
       }}
