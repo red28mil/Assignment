@@ -4,7 +4,6 @@ import { getTopRated } from "../api/tmdb-api";
 import { useQuery } from 'react-query';
 import Spinner from '../components/spinner';
 
-import AddToWatchIcon from "../components/cardIcons/addToWatch";
 
 
 const TopRatedPage = (props) => {

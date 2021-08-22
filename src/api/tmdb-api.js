@@ -73,7 +73,7 @@ export const getMovies =  async () => {
       }
       return response.json();
   };
-  export const getMovieCredits =  (id) => {
+  export const getMovieCredits =  () => {
     return fetch(
       `https://api.themoviedb.org/3/movie/{movie_id}/credits?api_key=${process.env.REACT_APP_TMDB_KEY}&language=en-US`
     )
@@ -104,13 +104,3 @@ export const getMovies =  async () => {
           }
           return response.json();
         };
-
-        export const getLatest =  async () => {
-          const response = await fetch(
-            `https://api.themoviedb.org/3/movie/latest?api_key=${process.env.REACT_APP_TMDB_KEY}&language=en-US&page=1`
-          );
-            if(!response.ok){
-              throw new Error(response.json().message);
-            }
-            return response.json();
-          };

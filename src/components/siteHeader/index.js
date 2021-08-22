@@ -33,8 +33,8 @@ const SiteHeader = ( { history }) => {
     {label: "Upcoming", path: "/movies/upcoming"},
     { label: "Top Rated", path: "/movies/toprated" },
     { label: "Popular", path: "/movies/popular" },
-    {label: "Latest", path: "/movies/latest"},
   ];
+const link = "https://github.com/red28mil/Assignment.git";
 
   const handleMenuSelect = (pageURL) => {
     history.push(pageURL);
@@ -54,6 +54,7 @@ const SiteHeader = ( { history }) => {
           <Typography variant="h6" className={classes.title}>
             All you ever wanted to know about Movies!
           </Typography>
+          <a href={link}>MYGITHUB </a>
             {isMobile ? (
               <>
                 <IconButton

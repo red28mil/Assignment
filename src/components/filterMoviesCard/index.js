@@ -71,7 +71,7 @@ export default function FilterMoviesCard(props) {
           type="search"
           variant="filled"
           value={props.titleFilter}
-      variant="filled"
+      //variant="filled"
       onChange={handleTextChange}
         />
         <FormControl className={classes.formControl}>

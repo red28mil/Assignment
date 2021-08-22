@@ -6,7 +6,6 @@ import { getMovieCredits } from "../api/tmdb-api";
 import { useQuery } from "react-query";
 import Spinner from '../components/spinner';
 
-
 const MovieCreditsPage = (props) => {
   const { id } = props.match.params;
     const { data: movie, error, isLoading, isError } = useQuery(
@@ -27,11 +26,13 @@ const MovieCreditsPage = (props) => {
     {movie ? (
       <>
         <PageTemplate movie={movie}>
-          <MovieCredits movie={movie} />
+          <MovieCredits movie={movie.id} />
+        
         </PageTemplate>
       </>
     ) : (
-      <p>Waiting for movie details</p>
+      <p>Waiting for movie details  {id}</p>
+      
     )}
   </>
   );
@@ -39,3 +40,10 @@ const MovieCreditsPage = (props) => {
 
 
 export default withRouter(MovieCreditsPage);
+
+
+
+
+
+
+

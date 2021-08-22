@@ -7,14 +7,14 @@ import ReactDOM from "react-dom";
 import AddMovieReviewPage from './pages/addMovieReviewPage';
 import HomePage from "./pages/homePage";
 import MoviePage from "./pages/movieDetailsPage";
-import { BrowserRouter, Route, Redirect, Switch, Link } from "react-router-dom";
+import { BrowserRouter, Route, Redirect, Switch} from "react-router-dom";
 import UpcomingMoviesPage from "./pages/upcomingMoviesPage";
-import FavoriteMoviesPage from "./pages/favoriteMoviesPage"; 
+import FavoriteMoviesPage from "./pages/favoriteMoviesPage";
 import TopRatedPage from "./pages/topRatedPage";
 import PopularMoviePage from "./pages/popularMoviePage";
 import { QueryClientProvider, QueryClient } from 'react-query';
 import {ReactQueryDevtools} from 'react-query/devtools';
-import LatestMoviesPage from "./pages/latestMoviesPage";
+
 
 const queryClient = new QueryClient({
   defaultOptions: {
@@ -42,7 +42,6 @@ const App = () => {
         <Route exact path="/movies/favorites" component={FavoriteMoviesPage}/>
         <Route exact path="/movies/toprated" component={TopRatedPage}/>
         <Route exact path="/movies/popular" component={PopularMoviePage}/>
-        <Route exact path="/movies/latest" component={LatestMoviesPage}/>
         <Route path="/movies/:id" component={MoviePage} />
         
         <Route exact path="/" component={HomePage} />

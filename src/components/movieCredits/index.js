@@ -1,37 +1,64 @@
 import React, { useEffect, useState }  from "react";
 import { makeStyles } from "@material-ui/core/styles";
-import Table from "@material-ui/core/Table";
-import TableBody from "@material-ui/core/TableBody";
-import TableCell from "@material-ui/core/TableCell";
-import TableContainer from "@material-ui/core/TableContainer";
-import TableHead from "@material-ui/core/TableHead";
-import TableRow from "@material-ui/core/TableRow";
-import Paper from "@material-ui/core/Paper";
-import { Link } from "react-router-dom";
+import Grid from "@material-ui/core/Grid";
 import { getMovieCredits } from "../../api/tmdb-api";
-import {  excerpt } from "../../util";
+import Typography from "@material-ui/core/Typography";
 
 const useStyles = makeStyles({
   table: {
     minWidth: 550,
+    display: "flex",
+    justifyContent: "center",
+    flexWrap: "wrap",
+    listStyle: "none",
+    margin: 0,
   },
 });
 
 export default function MovieCredits({ movie }) {
   const classes = useStyles();
-  const [credits, setCredits] = useState();
+  const [credits, setCredits] = useState([]);
 
   useEffect(() => {
-    getMovieCredits(credits).then((credits) => {
+    getMovieCredits(movie.id).then((credits) => {
       setCredits(credits);
     });
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
-
-  return (
+console.log(credits)
+let creditsCards = credits.map((s) => (
 <>
-<p>Credits={credits}</p>
+{credits ? (
+  <>
+  <Grid key={s.id} item xs={12} sm={6} md={4} lg={3} xl={2}>
+          <credits key={s.id} credits={s}/>
+          </Grid>
+  </>
+):(
+  <p>Wait</p>
+)}
 </>
-    
-  );
+)
+);
+return (
+  <Typography>
+{creditsCards}
+  </Typography>
+
+ );
 };
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
