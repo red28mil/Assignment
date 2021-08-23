@@ -18,7 +18,7 @@ import Spinner from '../spinner';
 const useStyles = makeStyles((theme) => ({
   root: {
     maxWidth: 345,
-    backgroundColor: "rgb(204, 204, 0)",
+    backgroundColor: "rgb(100, 0, 0)",
   },
   media: { height: 300 },
 
@@ -71,7 +71,7 @@ export default function FilterMoviesCard(props) {
           type="search"
           variant="filled"
           value={props.titleFilter}
-      variant="filled"
+      //variant="filled"
       onChange={handleTextChange}
         />
         <FormControl className={classes.formControl}>

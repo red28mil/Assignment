@@ -21,7 +21,7 @@ const useStyles = makeStyles({
   card: { maxWidth: 345 },
   media: { height: 500 },
   avatar: {
-    backgroundColor: "rgb(255, 0, 0)",
+    backgroundColor: "rgb(255, 128, 255)",
   },
 });
 
@@ -39,7 +39,7 @@ export default function MovieCard({ movie, action }) {
     e.preventDefault();
     addToFavorites(movie);
   };
-  
+
   return (
     <Card className={classes.card}>
       <CardHeader
@@ -81,14 +81,19 @@ export default function MovieCard({ movie, action }) {
           </Grid>
         </Grid>
       </CardContent>
-      <CardActions disableSpacing>
+      <CardActions>
         {action(movie)}
         <IconButton aria-label="add to favorites" onClick={handleAddToFavorite}>
-          <FavoriteIcon color="primary" fontSize="large" />
+          <FavoriteIcon color="secondary" fontSize="large" />
         </IconButton>
         <Link to={`/movies/${movie.id}`}>
-          <Button variant="outlined" size="medium" color="primary">
-            More Info ...
+          <Button variant="outlined" size="medium" color="secondary">
+            More Info
+          </Button>
+        </Link>
+        <Link to={`/credits/${movie.id}`}>
+          <Button variant="outlined" size="medium" color="secondary">
+            Cast
           </Button>
         </Link>
       </CardActions>

@@ -21,8 +21,7 @@ const Header = ({title, history}) => {
   //const title = props.title
   return (
     <Paper component="div" className={classes.root}>
-      <IconButton
-        aria-label="go back"onClick={() => history.goBack()}>
+      <IconButton aria-label="go back"onClick={() => history.goBack()}>
       
         <ArrowBackIcon color="primary" fontSize="large" />
       </IconButton>
@@ -30,6 +29,7 @@ const Header = ({title, history}) => {
       <Typography variant="h4" component="h3">
         {title}
       </Typography>
+
       <IconButton aria-label="go forward" onClick={() => history.goForward()}>
       
         <ArrowForwardIcon color="primary" fontSize="large" />

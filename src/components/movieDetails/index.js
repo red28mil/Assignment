@@ -9,7 +9,8 @@ import Fab from "@material-ui/core/Fab";
 import Typography from "@material-ui/core/Typography";
 import { makeStyles } from "@material-ui/core/styles";
 import Drawer from "@material-ui/core/Drawer";
-import MovieReviews from "../movieReviews"
+import MovieReviews from "../movieReviews";
+
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -27,7 +28,7 @@ const useStyles = makeStyles((theme) => ({
     position: "fixed",
     bottom: theme.spacing(2),
     right: theme.spacing(2),
-  },
+  }
 }));
 
 const MovieDetails = ( {movie}) => {
@@ -54,6 +55,8 @@ const MovieDetails = ( {movie}) => {
           </li>
         ))}
       </Paper>
+      
+
       <Paper component="ul" className={classes.root}>
         <Chip icon={<AccessTimeIcon />} label={`${movie.runtime} min.`} />
         <Chip
@@ -84,11 +87,11 @@ const MovieDetails = ( {movie}) => {
       >
         <NavigationIcon />
         Reviews
-      </Fab>
+      </Fab> 
       <Drawer anchor="top" open={drawerOpen} onClose={() => setDrawerOpen(false)}>
         <MovieReviews movie={movie} />
       </Drawer>
-    </>
+      </>
   );
 };
-export default  MovieDetails;
+export default MovieDetails;

@@ -64,3 +64,43 @@ export const getMovies =  async () => {
       }
       return response.json();
   };
+  export const getTopRated =  async () => {
+    const response = await fetch(
+      `https://api.themoviedb.org/3/movie/top_rated?api_key=${process.env.REACT_APP_TMDB_KEY}&language=en-US&include_adult=false&page=1`
+    );
+      if(!response.ok){
+        throw new Error(response.json().message);
+      }
+      return response.json();
+  };
+  export const getMovieCredits =  () => {
+    return fetch(
+      `https://api.themoviedb.org/3/movie/{movie_id}/credits?api_key=${process.env.REACT_APP_TMDB_KEY}&language=en-US`
+    )
+    .then((res) => res.json())
+      .then((json) => {
+        // console.log(json.results);
+        return json.results;
+      });
+      
+    };
+
+    export const getReleaseDates =  async () => {
+      const response = await fetch(
+        `https://api.themoviedb.org/3/movie/{movie_id}/release_dates?api_key=${process.env.REACT_APP_TMDB_KEY}&language=en-US&include_adult=false&page=1`
+      );
+        if(!response.ok){
+          throw new Error(response.json().message);
+        }
+        return response.json();
+      };
+
+      export const getPopularMovies =  async () => {
+        const response = await fetch(
+          `https://api.themoviedb.org/3/movie/popular?api_key=${process.env.REACT_APP_TMDB_KEY}&language=en-US&include_adult=false&page=1`
+        );
+          if(!response.ok){
+            throw new Error(response.json().message);
+          }
+          return response.json();
+        };
